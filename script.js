@@ -61,13 +61,16 @@ console.log(sumOfNaturalNum3(5))
 
 /* Order of the growth Table:
 
- O(1)     	constant
- O(logb n)	logarithmic (for any b)
+ O(1)     	    constant
+ O(logb n)	    logarithmic (for any b)
+ O(root n)      sublinear
  O(n)	        linear
  O(n logb n)	“en log en” or nLogn
- O(n^2)	    quadratic
- O(n^3)	    cubic
- O(c^n)	    exponential (for any c)
+ O(n^2)	        quadratic
+ O(n^3)	        cubic
+ O(c^n)	        exponential (for any c)
+
+ * If a particular problem is reducing by half with each iteration, it often indicates a logarithmic time complexity. 
 
 */
 
@@ -135,5 +138,79 @@ eg.2   1000m^2 + 200mn + 30m + 20n
 
 /* Theta Notation
 
+Whenever you know for sure use Theta Notation 
+
+*/
+
+/* Practice Questions for Time Complexity Analysis
+1)  What is the time, and space complexity of the following code: 
+
+    let a = 0, b = 0;
+    for (i = 0; i < N; i++) {
+        a = a + Math.random();
+    }
+    for (j = 0; j < M; j++) {
+        b = b + Math.random();
+    }
+
+    ==> O(N + M) time, O(1) space
+    ==> The first loop is O(N) and the second loop is O(M). Since N and M are independent variables, so we can’t say which one is the leading term. Therefore Time complexity of the given problem will be O(N+M).
+    Since variables size does not depend on the size of the input, therefore  Space Complexity will be constant or O(1)
+
+2) for(let i = 1; i < n; i = i*c){
+    Some Constant Work
+    }
+
+    ==> Time Complexity : Theta(logc n)
+
+3) for(let i = 2; i < n; i= i ** c){
+    some constant work
+    }
+        ==> Time Complexity : Theta(log logn) -> here the log log n is way more better and its almost near to constant
+
+*/
+
+/*  Analysis of Multiple Loops
+
+Example 1:
+
+for(let i = 0; i < n ; i++){        => Theta(n)  + 
+    //Constant work
+}
+for(let i = 1; i < n ; i = i*2){    => Theta(log n)  +
+    //Constant Work
+}
+for(let i = 1; i < 100; i++){       => Theta(1)
+    //Constant work
+}
+
+So here we'll add all the things (Theta(n) + Theta(log n) + Theta(1)) and ignore the lower order terms and those basic things  ===> Theta(n)
+
+
+Example 2:
+
+for(let i = 0; i < n; i++){   -> Theta(n)
+    for(let j = 1; j < n; j = j*2){   -> Theta(log n)
+        //Constant Work
+    }
+}
+So here we need to multiply all the things (Theta(n log n) )
+We are multiplying because its inside the loop , if its outside then we would add and take the highest order of growth
+
+
+Example 3: (Different type)
+
+for(let i = 0; i < n; i++){   -> Theta(n)
+    for(let j = 1; j < n; j = j*2){   -> Theta(log n)
+        //Constant Work
+    }
+}
+for(let i = 0; i < m; i++){   -> Theta(n)
+    for(let j = 1; j < m; j = j++){   -> Theta(m^2)
+        //Constant Work
+    }
+}
+
+here we should not add and take the large value because n and m are two different values some might be large or small ==> Theta(nlogn + m^2)
 
 */
