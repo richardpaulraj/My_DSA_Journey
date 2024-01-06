@@ -34,7 +34,7 @@ function sumOfNaturalNum3(num){
 let sum = 0
 for(let i = 1; i <= num; i++){
     for(let j = 1; j <= i; j++){ //Linear 
-        sum++ /Linear
+        sum++ //Linear
     }
 }
 return sum //Constant
@@ -198,6 +198,7 @@ So here we need to multiply all the things (Theta(n log n) )
 We are multiplying because its inside the loop , if its outside then we would add and take the highest order of growth
 
 
+
 Example 3: (Different type)
 
 for(let i = 0; i < n; i++){   -> Theta(n)
@@ -212,5 +213,80 @@ for(let i = 0; i < m; i++){   -> Theta(n)
 }
 
 here we should not add and take the large value because n and m are two different values some might be large or small ==> Theta(nlogn + m^2)
+
+*/
+
+
+/* Analysis of Recursion
+
+    Eg.1
+
+    function fun(n){
+        if(n <= 0){         //constant work  -> because even if the size of n grows there is not impact it will only check as others 
+          return            //constant work
+        } 
+        console.log('Hi')   //constant work
+
+        fun(n/2)            =>T(n/2)
+        fun(n/2)            =>T(n/2)
+    }
+
+    ==> when(n > 0)    T(n) = Theta(1) + T(n/2) + T(n/2)     This can be futher written as ==> 2T(n/2) + Theta(1) --> This is not the final ans we still need to find Asymptotic Notations
+
+
+        INCOMPLETE -Still pending to find Asymptotic Notations
+
+
+        refer this
+        1) https://www.geeksforgeeks.org/batch/dsa-using-javascript/track/dsasp-js-introduction/article/NzM2OQ%3D%3D
+
+        2) https://www.geeksforgeeks.org/batch/dsa-using-javascript/track/dsasp-js-introduction/article/NTY5NQ%3D%3D
+
+
+
+
+
+
+    //For analysis of recursive functions we use this term called recurrence relations in simple words whatever is there inside the recursion call use that only in T(here)
+
+    //Here we have to write corner cases as well 
+
+    ==> when(n <= 0)   T(n) = Theta(1)    (we are using here Theta because we exactly know )
+
+    we should use these two answers in recursive func
+
+
+    Eg.2
+
+    function fun(n){
+        if(n === 0){
+            return
+        }
+        for(let i = 0; i < n; i++){
+            console.log('Hi')
+        }
+        fun(n/2)
+        fun(n/3)
+    }
+
+    ==> when(n > 0)     T(n) = T(n/2) + T(n/3) + T(1)
+    ==> when(n <= 0)    T(n) = Theta (1)
+
+
+    Eg.3
+
+    function fun(n){
+        if(n === 1){
+            return
+        }
+        console.log('Hi')
+        
+        fun(n-1)
+    }
+
+    ==> when(n > 1)   T(n) = T(n-1) + T(1)
+    ==> when(n = 1)   T(1) = Theta(1)
+
+
 
 */
