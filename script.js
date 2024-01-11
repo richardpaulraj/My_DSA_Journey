@@ -1,3 +1,5 @@
+                                                 //Analysis of an Algorithm//
+
 //Example Problem -- Sum of n Natural Numbers
 
 /* // Type 1
@@ -269,7 +271,7 @@ here we should not add and take the large value because n and m are two differen
         fun(n/3)
     }
 
-    ==> when(n > 0)     T(n) = T(n/2) + T(n/3) + T(1)
+    ==> when(n > 0)     T(n) = T(n/2) + T(n/3) + Theta(n)
     ==> when(n <= 0)    T(n) = Theta (1)
 
 
@@ -284,9 +286,124 @@ here we should not add and take the large value because n and m are two differen
         fun(n-1)
     }
 
-    ==> when(n > 1)   T(n) = T(n-1) + T(1)
+    ==> when(n > 1)   T(n) = T(n-1) + Theta(1)
     ==> when(n = 1)   T(1) = Theta(1)
 
 
 
 */
+
+
+
+
+
+                                                              //Mathematics//
+
+
+// 1) Count Digits  
+
+/* Method-1
+function countDigits(num){
+    
+    console.log(num.toString().split('').length)
+
+}
+countDigits(1168)
+*/
+
+ 
+/*  Method-2
+
+function countDigits(num){
+
+    if (num === 0) return 1;
+
+    let counter = 0
+    while(num){
+        num = Math.floor(num / 10)
+        counter++    
+    }
+    return counter
+    
+}
+console.log(countDigits(4562))
+//Here Time  = Theta(d) --- where d is the number of digits in the given number
+ 
+*/
+ 
+// 2) Palindrome Number
+
+/* Method-1
+function palindromeNum(num){
+    let reversedNum =  Number(num.toString().split('').reverse().join('')) 
+
+    return(num === reversedNum)
+}
+console.log(palindromeNum(1001))
+
+Time-complexity = Theta(1)  
+*/
+
+/* Method-2
+function palindromeNum(num){
+
+    let reducedNum = num
+    let reversedNum = ''
+    while(reducedNum){
+        
+        let lastNum = (reducedNum % 10)
+        
+        reducedNum = Math.floor(reducedNum / 10)
+        reversedNum += lastNum
+    }
+
+   reversedNum = Number(reversedNum)
+
+   return(num === reversedNum)
+
+}
+console.log(palindromeNum(21212))
+
+Time-complexity = Theta(d)  -- number of digits in the given number
+
+*/
+
+// 3) Factorial of a Number
+
+/* Method-1
+
+ function factorial(num){
+    let ans = 1
+    for(let i = 2; i <= num; i++){
+        ans *= i
+    }
+    console.log(ans)
+}
+factorial(5)
+
+Time-complexity = Theta(n)
+Aux-Space = Theta(1)
+
+*/
+
+/* Method-2 using Recursion 
+
+function factorial(num){
+    if(num === 0){
+        return 1
+    }
+    return num * factorial(num - 1)
+}
+
+console.log(factorial(5))
+
+Time-complexity = Theta(n)
+Aux-Space = Theta(n)  // Because it will have a stack of stored items  of previous factorials
+
+
+
+*/
+
+// ---start from digits in factorial problem
+
+
